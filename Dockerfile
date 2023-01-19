@@ -23,7 +23,7 @@ RUN apt-get install python-pip -y \
                     rm -rf /var/lib/apt/lists/*
 
 # Upgrade pip
-RUN pip install --upgrade pip
+RUN pip install --upgrade pip == 21.1.2
 
 ## The enviroment variable ensures that the python output is set straight
 ## to the terminal with out buffering it first
