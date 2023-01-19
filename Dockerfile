@@ -47,7 +47,8 @@ WORKDIR /Invoice_Management_System
 COPY . /Invoice_Management_System
 
 # Install any needed packages specified in requirements.txt
-RUN pip install -r requirements.txt
+RUN export PYTHONPATH=/usr/bin/python \ 
+&& pip install -r requirements.txt
 
 # Exposed Ports
 EXPOSE 8000
