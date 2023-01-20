@@ -45,7 +45,7 @@ RUN chown -R root:root /var/log/uwsgi
 RUN mkdir /Invoice_Management_System
 WORKDIR /Invoice_Management_System
 COPY . /Invoice_Management_System
-
+COPY requirements.txt .
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
 

@@ -5,7 +5,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
-
+import requests
 # Local Applications imports
 from invoice.models.customer import Customer
 from invoice.models.inv import Invoice
@@ -53,7 +53,14 @@ def customer(request, customer_id):
     }
     return render(request, 'invoice/customer.html', context)
 
-
+def send_simple_message():
+	return requests.post(
+		"https://api.mailgun.net/v3/sandboxa712d3ffed70485d992d5e4b72756a08.mailgun.org/messages",
+		auth=("api", "d9cca0779272ab83b19cc503b1151e42-f7d687c0-748d3c9c"),
+		data={"from": "Mailgun Sandbox <postmaster@sandboxa712d3ffed70485d992d5e4b72756a08.mailgun.org>",
+			"to": "akash <akash.gautam29@gmail.com>",
+			"subject": "Hello akash",
+			"text": "Congratulations akash, you just sent an email with Mailgun!  You are truly awesome!"})
 # View for creating a new customer.
 @login_required(login_url='users:login')
 def new_customer(request):
@@ -68,7 +75,7 @@ def new_customer(request):
 
     context = {'form': form}
     template_name = 'invoice/new_customer.html'
-
+    send_simple_message()
     return render(request, template_name, context)
 
 
