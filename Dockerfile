@@ -48,8 +48,6 @@ COPY . /Invoice_Management_System
 COPY requirements.txt .
 # Install any needed packages specified in requirements.txt
 
-RUN python -m pip install --upgrade pip
-RUN pip install -r requirements.txt
 
 # Exposed Ports
 EXPOSE 8000
