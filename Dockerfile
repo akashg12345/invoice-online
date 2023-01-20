@@ -48,7 +48,7 @@ COPY . /Invoice_Management_System
 COPY requirements.txt .
 # Install any needed packages specified in requirements.txt
 
-RUN apt-get -y install python3-pip
+RUN python -m pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 # Exposed Ports
